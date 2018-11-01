@@ -18,11 +18,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionView: JTAppleCalendarView!
     @IBOutlet weak var currentMonthLabel: UILabel!
     
+    // Add Event View Properties.
+    @IBOutlet weak var addEventView: UIView!
+    @IBOutlet weak var addEventHeaderView: UIView!
+    @IBOutlet weak var addEventTitleVIew: UIView!
+    @IBOutlet weak var addEventTimeView: UIView!
+    @IBOutlet weak var addEventAlertView: UIView!
+    @IBOutlet weak var addEventNotesView: UIView!
+    @IBOutlet weak var addEventSubNotesView: UIView!
+    @IBOutlet weak var addEventAddButton: UIButton!
+    @IBOutlet weak var addEventCancleButton: UIButton!
+    @IBOutlet weak var addEventTitleTextField: UITextField!
+    @IBOutlet weak var addEventLocationTextField: UITextField!
+    
     var formatter = DateFormatter()
     var calendarDates = ["2018 11 01", "2018 11 05", "2018 11 10", "2018 11 12"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setAllViewBorders()
         setEventInCalendar()
         collectionView.scrollToDate(Date())
         formatter.dateFormat = "MMM"
@@ -97,8 +111,46 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func addEventAddButtonAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func addEventCancleButtonAction(_ sender: UIButton) {
+    }
+    
+    
+    
     func convertDateToString(date: Int64, format: String) -> String {
         return Date().toString(format: format, date: Date(milliseconds: Int64(date)))
+    }
+}
+
+// MARK: SetUp Add Event View
+extension ViewController {
+    
+    func setAllViewBorders() {
+        setBorder(view: addEventView)
+        setBorder(view: addEventHeaderView)
+        setBorder(view: addEventTitleVIew)
+        setBorder(view: addEventTimeView)
+        setBorder(view: addEventAlertView)
+        setBorder(view: addEventNotesView)
+        setBorder(view: addEventSubNotesView)
+    }
+    
+    func setBorder(view: UIView) {
+        view.layer.borderColor = UIColor(red: 0/255, green: 92/255, blue: 150/255, alpha: 1).cgColor
+        view.layer.borderWidth = 1.0
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == addEventTitleTextField && string.count > 0 {
+            addEventAddButton.isEnabled = true
+        } else {
+            addEventAddButton.isEnabled = false
+        }
+        return true
     }
 }
 
@@ -152,9 +204,15 @@ extension ViewController: JTAppleCalendarViewDelegate {
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         print("Current Selected Date is \(date)")
-        if let url = URL(string: "calshow:\(date.timeIntervalSinceReferenceDate)") {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
+        
+        addEventView.isHidden = false
+        
+//        let calendarListViewController = CalendarListViewController()
+//        self.present(calendarListViewController, animated: true, completion: nil)
+        
+//        if let url = URL(string: "calshow:\(date.timeIntervalSinceReferenceDate)") {
+//            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//        }
     }
 }
 
