@@ -8,6 +8,7 @@ target 'CalendarDemo' do
   # Pods for CalendarDemo
 
 	pod 'JTAppleCalendar'
+    pod 'CalendarKit'
 
   target 'CalendarDemoTests' do
     inherit! :search_paths
