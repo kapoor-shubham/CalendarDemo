@@ -69,11 +69,15 @@ class CalendarListViewController: DayViewController {
 //                                                           style: .plain,
 //                                                           target: self,
 //                                                           action: #selector(ExampleController.presentDatePicker))
-        navigationController?.navigationBar.isTranslucent = false
+//        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.isTranslucent = true
+        
         dayView.autoScrollToFirstEvent = true
+        dayView.isHeaderViewVisible = false
         updateStyle(StyleGenerator.darkStyle())
         reloadData()
         print(dayView)
+        
     }
     
 //    @objc func changeStyle() {
@@ -120,8 +124,7 @@ class CalendarListViewController: DayViewController {
         for i in 0...4 {
             let event = Event()
             let duration = Int(arc4random_uniform(160) + 60)
-            let datePeriod = TimePeriod(beginning: date,
-                                        chunk: TimeChunk.dateComponents(minutes: duration))
+            let datePeriod = TimePeriod(beginning: date, chunk: TimeChunk.dateComponents(minutes: duration))
             
             event.startDate = datePeriod.beginning!
             event.endDate = datePeriod.end!
