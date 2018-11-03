@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -636,14 +636,14 @@
                                     <constraint firstAttribute="trailing" secondItem="hZV-VH-XPz" secondAttribute="trailing" id="uYA-OW-r3R"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02o-ZT-fJG">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02o-ZT-fJG">
                                 <rect key="frame" x="0.0" y="356" width="320" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8z-K7-00f">
                                         <rect key="frame" x="20" y="10" width="51" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Cancle">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="datePickerCancelAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W6p-iW-rI9"/>
@@ -653,14 +653,14 @@
                                         <rect key="frame" x="262" y="10" width="38" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Done">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="datePickerDoneAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="juq-j3-T5h"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.1960784314" green="0.31764705879999999" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="x8z-K7-00f" firstAttribute="leading" secondItem="02o-ZT-fJG" secondAttribute="leading" constant="20" id="DHy-8k-nz1"/>
                                     <constraint firstItem="x8z-K7-00f" firstAttribute="centerY" secondItem="02o-ZT-fJG" secondAttribute="centerY" id="F38-3L-LYC"/>
@@ -671,8 +671,7 @@
                             </view>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="saK-CA-hy9">
                                 <rect key="frame" x="0.0" y="406" width="320" height="162"/>
-                                <color key="backgroundColor" red="0.1960784314" green="0.31764705879999999" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="162" id="fmr-P7-mB6"/>
                                 </constraints>
@@ -750,13 +749,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="48" height="48"/>
-        <image name="cross" width="48" height="48"/>
-        <image name="currentDateEllipse" width="6" height="6"/>
-        <image name="downArrow" width="48" height="48"/>
-        <image name="left" width="25" height="25"/>
-        <image name="menu" width="48" height="48"/>
-        <image name="right" width="25" height="25"/>
-        <image name="visitEllipse" width="30" height="29"/>
+        <image name="add" width="203.29411315917969" height="203.29411315917969"/>
+        <image name="cross" width="203.29411315917969" height="203.29411315917969"/>
+        <image name="currentDateEllipse" width="9.75" height="9.75"/>
+        <image name="downArrow" width="203.29411315917969" height="203.29411315917969"/>
+        <image name="left" width="37.5" height="37.5"/>
+        <image name="menu" width="72" height="72"/>
+        <image name="right" width="37.5" height="37.5"/>
+        <image name="visitEllipse" width="30" height="29.5"/>
     </resources>
 </document>

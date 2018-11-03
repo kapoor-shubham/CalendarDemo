@@ -67,6 +67,7 @@
             setAllViewBorders()
             pickerHeaderView.isHidden = true
             datePicker.isHidden = true
+            datePicker.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
             collectionView.scrollToDate(Date())
             formatter.dateFormat = "MMM"
             currentMonthLabel.text = formatter.string(from: Date())
@@ -308,12 +309,16 @@
             pickerHeaderView.isHidden = false
             datePicker.isHidden = false
             datePicker.tag = 200
+            addEventTitleTextField.resignFirstResponder()
+            addEventLocationTextField.resignFirstResponder()
         }
         
         @IBAction func endEvenrtDateAction(_ sender: Any) {
             pickerHeaderView.isHidden = false
             datePicker.isHidden = false
             datePicker.tag = 300
+            addEventTitleTextField.resignFirstResponder()
+            addEventLocationTextField.resignFirstResponder()
         }
         
         @IBAction func datePickerCancelAction(_ sender: UIButton) {

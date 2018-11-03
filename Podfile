@@ -8,6 +8,7 @@ target 'CalendarDemo' do
   # Pods for CalendarDemo
 pod 'JTAppleCalendar'
 pod 'CalendarKit'
+pod 'IQKeyboardManagerSwift'
   target 'CalendarDemoTests' do
     inherit! :search_paths
     # Pods for testing
