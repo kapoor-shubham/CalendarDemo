@@ -560,10 +560,16 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIw-tB-2OR">
                                                 <rect key="frame" x="250" y="10" width="30" height="30"/>
                                                 <state key="normal" title="Left"/>
+                                                <connections>
+                                                    <action selector="nextDayEvents:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ld5-zp-0O8"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nbf-HN-hpn">
                                                 <rect key="frame" x="0.0" y="10" width="36" height="30"/>
                                                 <state key="normal" title="Right"/>
+                                                <connections>
+                                                    <action selector="previousDayEvents:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pAL-3l-f2D"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.19607843137254902" green="0.31764705882352939" blue="0.44705882352941179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

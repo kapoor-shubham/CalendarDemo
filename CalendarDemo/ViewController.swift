@@ -56,6 +56,7 @@
         var customTimeLineView = TimelineView()
         var eventCalender = "Calendar"
         var userSelectedDate = Date()
+        var visibleMonthEventDates = [Date]()
         
         var data = [["Breakfast at Tiffany's",
                      "New York, 5th avenue"],
@@ -120,6 +121,7 @@
             self.formatter.dateFormat = "MMM"
             currentMonthLabel.text = formatter.string(from: date!)
             fighterImageView.image = UIImage(named: currentMonthLabel.text!)
+            
         }
         
         func setUpCalenderView() {
@@ -141,7 +143,8 @@
             
             if calendarDates.count != 0 {
                 for i in 0...calendarDates.count - 1 {
-                    if formatter.string(from: cellState.date) == calendarDates[i] {
+                    if visibleMonthEventDates.contains(cellState.date) {
+//                    if formatter.string(from: cellState.date) == calendarDates[i] {
                         validCell.eventImageView.image = UIImage(named: "currentDateEllipse")
                         validCell.eventImageView.isHidden = false
                     }
@@ -310,6 +313,20 @@
             eventListContainerView.isHidden = true
         }
         
+        @IBAction func nextDayEvents(_ sender: Any) {
+            userSelectedDate = Calendar.current.date(byAdding: .day, value: 1, to: userSelectedDate)!
+            formatter.dateFormat = "EEEE dd MMM yyyy"
+            eventListHeaderDateLabel.text = formatter.string(from: userSelectedDate)
+            dayVC.reloadData()
+        }
+        
+        @IBAction func previousDayEvents(_ sender: Any) {
+            userSelectedDate = Calendar.current.date(byAdding: .day, value: -1, to: userSelectedDate)!
+            formatter.dateFormat = "EEEE dd MMM yyyy"
+            eventListHeaderDateLabel.text = formatter.string(from: userSelectedDate)
+            dayVC.reloadData()
+        }
+        
         //    MARK: DatePicker Methods
         @IBAction func startEvenrtDateAction(_ sender: Any) {
             pickerHeaderView.isHidden = false
@@ -342,8 +359,25 @@
             }
         }
         
-        func getTotalEventsOnCalendar() {
-        
+        func getMonthEventsOnCalendar(eventsOnSelectedMonth: [Date]) -> [Date] {
+            
+            let eventStrore = EKEventStore()
+            let calendars = eventStrore.calendars(for: .event)
+            visibleMonthEventDates = []
+            for calendar in calendars {
+                if calendar.title == eventCalender {
+                    for eventDate in eventsOnSelectedMonth {
+                        let predicate = eventStrore.predicateForEvents(withStart: eventDate, end: Calendar.current.date(byAdding: .hour, value: 24, to: eventDate)!, calendars: [calendar])
+                        
+//                    let predicate = eventStrore.predicateForEvents(withStart: userSelectedDate, end: Calendar.current.date(byAdding: .day, value: 1, to: userSelectedDate)!, calendars: [calendar])
+                    
+                        if eventStrore.events(matching: predicate).count > 0 {
+                            visibleMonthEventDates.append(eventDate)
+                        }
+                    }
+                }
+            }
+            return visibleMonthEventDates
         }
     }
     
@@ -408,8 +442,8 @@
             
             cell.currentDateImageView.isHidden = true
             formatter.dateFormat = "yyyy MM dd"
+            
             if formatter.string(from: cellState.date) == formatter.string(from: Date()) {
-                
                 cell.currentDateImageView.isHidden = false
                 cell.currentDateImageView.image = UIImage(named: "visitEllipse")
             } else {
@@ -419,10 +453,19 @@
             return cell
         }
         
+        func calendar(_ calendar: JTAppleCalendarView, willScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+            var dateArray = [Date]()
+            for dates in visibleDates.monthDates {
+                dateArray.append(dates.date)
+            }
+            print(getMonthEventsOnCalendar(eventsOnSelectedMonth: dateArray))
+        }
+        
         func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
             if collectionView.cellStatus(for: Date()) != nil {
                 print(Date())
             }
+            
             setUpViewsFromCalender(from: visibleDates)
         }
         
