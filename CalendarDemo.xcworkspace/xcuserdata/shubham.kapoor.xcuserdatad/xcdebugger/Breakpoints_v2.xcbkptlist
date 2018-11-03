@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalendarDemo/ViewController.swift"
-            timestampString = "562912466.15466"
+            timestampString = "562914925.6313061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "458"
-            endingLineNumber = "458"
-            landmarkName = "calendar(_:cellForItemAt:cellState:indexPath:)"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
+            landmarkName = "calendar(_:willScrollToDateSegmentWith:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CalendarDemo/ViewController.swift"
-            timestampString = "562912466.155876"
+            timestampString = "562914925.6314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
             landmarkName = "calendar(_:cellForItemAt:cellState:indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
