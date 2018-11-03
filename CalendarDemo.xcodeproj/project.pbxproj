@@ -14,7 +14,6 @@
 		5A1871E2218852DF0001AAEA /* CalendarDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A1871E0218852DF0001AAEA /* CalendarDemo.xcdatamodeld */; };
 		5A1871E4218852E20001AAEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A1871E3218852E20001AAEA /* Assets.xcassets */; };
 		5A1871E7218852E20001AAEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A1871E5218852E20001AAEA /* LaunchScreen.storyboard */; };
-		5A419D91218C2555007340E9 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A419D90218C2555007340E9 /* NewViewController.swift */; };
 		5A45B2882188572A00639284 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A45B2872188572A00639284 /* CalendarCollectionViewCell.swift */; };
 		9A5B70FD72A2B1E559A29005 /* Pods_CalendarDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84B97841A2558B854B83A71 /* Pods_CalendarDemoTests.framework */; };
 		CEE19E5C218B6D9D001E9819 /* CalendarListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE19E5B218B6D9D001E9819 /* CalendarListViewController.swift */; };
@@ -53,7 +52,6 @@
 		5A1871E8218852E20001AAEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A1871ED218852E20001AAEA /* CalendarDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1871F8218852E20001AAEA /* CalendarDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A419D90218C2555007340E9 /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		5A45B2872188572A00639284 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		7793C29FA1FEB08357D2C915 /* Pods-CalendarDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarDemo/Pods-CalendarDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		9B6D60CBE8E0036A17E48284 /* Pods_CalendarDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,7 +116,6 @@
 			children = (
 				5A1871D9218852DF0001AAEA /* AppDelegate.swift */,
 				5A1871DB218852DF0001AAEA /* ViewController.swift */,
-				5A419D90218C2555007340E9 /* NewViewController.swift */,
 				CEE19E5D218B6E45001E9819 /* StyleGenerator.swift */,
 				CEE19E5B218B6D9D001E9819 /* CalendarListViewController.swift */,
 				5A45B2872188572A00639284 /* CalendarCollectionViewCell.swift */,
@@ -372,7 +369,6 @@
 			files = (
 				5A45B2882188572A00639284 /* CalendarCollectionViewCell.swift in Sources */,
 				5A1871DC218852DF0001AAEA /* ViewController.swift in Sources */,
-				5A419D91218C2555007340E9 /* NewViewController.swift in Sources */,
 				5A1871DA218852DF0001AAEA /* AppDelegate.swift in Sources */,
 				CEE19E5C218B6D9D001E9819 /* CalendarListViewController.swift in Sources */,
 				5A1871E2218852DF0001AAEA /* CalendarDemo.xcdatamodeld in Sources */,
