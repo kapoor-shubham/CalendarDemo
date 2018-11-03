@@ -142,11 +142,13 @@
             formatter.dateFormat = "yyyy MM dd"
             
             if calendarDates.count != 0 {
-                for i in 0...calendarDates.count - 1 {
+                for _ in 0..<calendarDates.count {
                     if visibleMonthEventDates.contains(cellState.date) {
 //                    if formatter.string(from: cellState.date) == calendarDates[i] {
                         validCell.eventImageView.image = UIImage(named: "currentDateEllipse")
                         validCell.eventImageView.isHidden = false
+                    } else {
+                        validCell.eventImageView.isHidden = true
                     }
                 }
             }
@@ -449,6 +451,14 @@
             } else {
                 cell.currentDateImageView.isHidden = true
             }
+            
+            if visibleMonthEventDates.contains(cellState.date) {
+                cell.eventImageView.image = UIImage(named: "currentDateEllipse")
+                cell.eventImageView.isHidden = false
+            } else {
+                cell.eventImageView.isHidden = true
+            }
+            
             handleCalendarCellTextColor(view: cell, cellState: cellState)
             return cell
         }
