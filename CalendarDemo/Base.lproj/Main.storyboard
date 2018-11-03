@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -505,7 +506,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.024042853562498478" green="0.037626453150872548" blue="0.078377251915994761" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.024042853562498478" green="0.037626453150872548" blue="0.078377251915994761" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Zsm-Bc-dtB" firstAttribute="leading" secondItem="Mys-LS-phK" secondAttribute="leading" id="3ch-0I-e6F"/>
                                     <constraint firstAttribute="trailing" secondItem="cte-E9-NhF" secondAttribute="trailing" id="6ez-47-uAu"/>
@@ -583,7 +584,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3A7-KF-irk">
                                                 <rect key="frame" x="119" y="14.5" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIw-tB-2OR">
@@ -621,7 +622,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.024042853560000001" green="0.037626453150000003" blue="0.078377251920000002" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.024042853560000001" green="0.037626453150000003" blue="0.078377251920000002" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Wch-OR-H5i" firstAttribute="top" secondItem="Hg0-cJ-p7j" secondAttribute="top" id="1hj-DM-9r4"/>
                                     <constraint firstItem="hZV-VH-XPz" firstAttribute="leading" secondItem="Hg0-cJ-p7j" secondAttribute="leading" id="72W-Gz-tOH"/>
@@ -753,9 +754,9 @@
         <image name="cross" width="48" height="48"/>
         <image name="currentDateEllipse" width="6" height="6"/>
         <image name="downArrow" width="48" height="48"/>
-        <image name="left" width="256" height="256"/>
+        <image name="left" width="25" height="25"/>
         <image name="menu" width="48" height="48"/>
-        <image name="right" width="256" height="256"/>
+        <image name="right" width="25" height="25"/>
         <image name="visitEllipse" width="30" height="29"/>
     </resources>
 </document>

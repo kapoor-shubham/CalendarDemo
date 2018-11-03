@@ -52,52 +52,16 @@
         
         var events = [Event]()
         var formatter = DateFormatter()
-        var calendarDates = ["2018 11 01", "2018 11 05", "2018 11 10", "2018 11 12"]
         var customTimeLineView = TimelineView()
         var eventCalender = "Calendar"
         var userSelectedDate = Date()
         var visibleMonthEventDates = [Date]()
-        
-        var data = [["Breakfast at Tiffany's",
-                     "New York, 5th avenue"],
-                    
-                    ["Workout",
-                     "Tufteparken"],
-                    
-                    ["Meeting with Alex",
-                     "Home",
-                     "Oslo, Tjuvholmen"],
-                    
-                    ["Beach Volleyball",
-                     "Ipanema Beach",
-                     "Rio De Janeiro"],
-                    
-                    ["WWDC",
-                     "Moscone West Convention Center",
-                     "747 Howard St"],
-                    
-                    ["Google I/O",
-                     "Shoreline Amphitheatre",
-                     "One Amphitheatre Parkway"],
-                    
-                    ["✈️️ to Svalbard ❄️️❄️️❄️️❤️️",
-                     "Oslo Gardermoen"],
-                    
-                    ["💻📲 Developing CalendarKit",
-                     "🌍 Worldwide"],
-                    
-                    ["Software Development Lecture",
-                     "Mikpoli MB310",
-                     "Craig Federighi"],
-                    ]
-        
-        var colors = [UIColor.blue,
-                      UIColor.yellow,
-                      UIColor.green,
-                      UIColor.red]
+
+        var colors = [UIColor.blue, UIColor.yellow, UIColor.green, UIColor.red]
         
         var currentStyle = SelectedStyle.Dark
         let dayVC = DayViewController()
+        
         override func viewDidLoad() {
             super.viewDidLoad()
             setAllViewBorders()
@@ -141,15 +105,13 @@
             formatter.timeZone = NSTimeZone.default
             formatter.dateFormat = "yyyy MM dd"
             
-            if calendarDates.count != 0 {
-                for _ in 0..<calendarDates.count {
+                for _ in 0..<visibleMonthEventDates.count {
                     if visibleMonthEventDates.contains(cellState.date) {
 //                    if formatter.string(from: cellState.date) == calendarDates[i] {
                         validCell.eventImageView.image = UIImage(named: "currentDateEllipse")
                         validCell.eventImageView.isHidden = false
                     } else {
                         validCell.eventImageView.isHidden = true
-                    }
                 }
             }
         }
@@ -320,6 +282,12 @@
             formatter.dateFormat = "EEEE dd MMM yyyy"
             eventListHeaderDateLabel.text = formatter.string(from: userSelectedDate)
             dayVC.reloadData()
+            if formatter.string(from: Date()) == formatter.string(from: userSelectedDate) {
+                eventListFooterLabel.text = "Today"
+                eventListFooterLabel.isHidden = false
+            } else {
+                eventListFooterLabel.isHidden = true
+            }
         }
         
         @IBAction func previousDayEvents(_ sender: Any) {
@@ -327,6 +295,12 @@
             formatter.dateFormat = "EEEE dd MMM yyyy"
             eventListHeaderDateLabel.text = formatter.string(from: userSelectedDate)
             dayVC.reloadData()
+            if formatter.string(from: Date()) == formatter.string(from: userSelectedDate) {
+                eventListFooterLabel.text = "Today"
+                eventListFooterLabel.isHidden = false
+            } else {
+                eventListFooterLabel.isHidden = true
+            }
         }
         
         //    MARK: DatePicker Methods
@@ -494,6 +468,13 @@
             formatter.dateFormat = "EEEE dd MMM yyyy"
             eventListHeaderDateLabel.text = formatter.string(from: date)
             eventListView.addSubview(calendarListView)
+            
+            if formatter.string(from: Date()) == formatter.string(from: date) {
+                eventListFooterLabel.text = "Today"
+                eventListFooterLabel.isHidden = false
+            } else {
+                eventListFooterLabel.isHidden = true
+            }
         }
     }
     
