@@ -17,13 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ld5-wR-7oW">
-                                <rect key="frame" x="20" y="20" width="39" height="30"/>
-                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ld5-wR-7oW">
+                                <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ld5-wR-7oW" secondAttribute="height" multiplier="1:1" id="Zhc-Dh-eaF"/>
                                     <constraint firstAttribute="height" constant="30" id="waF-lA-gkm"/>
                                 </constraints>
-                                <state key="normal" title="Menu">
+                                <state key="normal" image="menu">
                                     <color key="titleColor" red="0.038556371800000003" green="0.059070730330000001" blue="0.1264474937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
@@ -516,16 +517,24 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oc-gg-1Bk">
-                                                <rect key="frame" x="0.0" y="0.0" width="39" height="30"/>
-                                                <state key="normal" title="Close"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oc-gg-1Bk">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="FGE-gh-xKC"/>
+                                                    <constraint firstAttribute="height" constant="30" id="WKC-lu-uWu"/>
+                                                </constraints>
+                                                <state key="normal" image="cross"/>
                                                 <connections>
                                                     <action selector="closeEventListButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ut4-j0-fz0"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZX-JU-v2z">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZX-JU-v2z">
                                                 <rect key="frame" x="250" y="0.0" width="30" height="30"/>
-                                                <state key="normal" title="Add">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="TOE-Ld-II4"/>
+                                                    <constraint firstAttribute="width" constant="30" id="Ty9-Md-qqk"/>
+                                                </constraints>
+                                                <state key="normal" image="add">
                                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
@@ -557,16 +566,24 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIw-tB-2OR">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIw-tB-2OR">
                                                 <rect key="frame" x="250" y="10" width="30" height="30"/>
-                                                <state key="normal" title="Left"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="DxX-hc-XsV"/>
+                                                    <constraint firstAttribute="height" constant="30" id="QWF-EQ-mop"/>
+                                                </constraints>
+                                                <state key="normal" image="left"/>
                                                 <connections>
                                                     <action selector="nextDayEvents:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ld5-zp-0O8"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nbf-HN-hpn">
-                                                <rect key="frame" x="0.0" y="10" width="36" height="30"/>
-                                                <state key="normal" title="Right"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nbf-HN-hpn">
+                                                <rect key="frame" x="0.0" y="10" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="Mtd-Jc-ASu"/>
+                                                    <constraint firstAttribute="height" constant="30" id="zNR-bc-ODN"/>
+                                                </constraints>
+                                                <state key="normal" image="right"/>
                                                 <connections>
                                                     <action selector="previousDayEvents:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pAL-3l-f2D"/>
                                                 </connections>
@@ -710,7 +727,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="48" height="48"/>
+        <image name="cross" width="48" height="48"/>
         <image name="currentDateEllipse" width="5" height="5"/>
+        <image name="left" width="256" height="256"/>
+        <image name="menu" width="48" height="48"/>
+        <image name="right" width="256" height="256"/>
         <image name="visitEllipse" width="30" height="29"/>
     </resources>
 </document>
