@@ -72,6 +72,8 @@
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
                 
             })
+            
+            UIApplication.shared.applicationIconBadgeNumber = 0
 
             setAllViewBorders()
             pickerHeaderView.isHidden = true
