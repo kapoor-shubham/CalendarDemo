@@ -192,7 +192,7 @@
                                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
 
                                 //getting the notification request
-                                let request = UNNotificationRequest(identifier: "SimplifiedIOSNotification", content: content, trigger: trigger)
+                                let request = UNNotificationRequest(identifier: "\(title) \(Float.random(in: 0 ..< 1))", content: content, trigger: trigger)
                                 
                                 UNUserNotificationCenter.current().delegate = self
                                 
@@ -290,6 +290,26 @@
             baseColor.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
             return UIColor(hue: h, saturation: s * 0.3, brightness: b, alpha: a)
         }
+        
+        /* All Day Switch Action */
+        @IBAction func addEventAllDayAction(_ sender: Any) {
+            if allDayEventSwitch.isOn {
+                formatter.dateFormat = "EEEE dd MMM yyyy"
+                startTextField.text = formatter.string(from: userSelectedDate)
+                endTextField.text = formatter.string(from: userSelectedDate)
+                datePicker.datePickerMode = .date
+            } else {
+                datePicker.datePickerMode = .dateAndTime
+                formatter.dateFormat = "dd MMM yyyy, h:mm a"
+                if (startTextField.text?.count)! > 0 {
+                    startTextField.text = formatter.string(from: (formatter.date(from: startTextField.text!)!))
+                }
+                if (endTextField.text?.count)! > 0 {
+                    endTextField.text = formatter.string(from: (formatter.date(from: endTextField.text!)!))
+                }
+            }
+        }
+        
         
         // MARK: DayViewDelegate
         
