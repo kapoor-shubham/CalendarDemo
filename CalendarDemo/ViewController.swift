@@ -58,7 +58,7 @@
         var customTimeLineView = TimelineView()
         var eventCalender = "Calendar"
         var userSelectedDate = Date()
-        var visibleMonthEventDates = [Date]()
+        var visibleMonthEventDates = [String]()
 
         var colors = [UIColor.blue, UIColor.yellow, UIColor.green, UIColor.red]
         
@@ -117,15 +117,15 @@
             formatter.timeZone = NSTimeZone.default
             formatter.dateFormat = "yyyy MM dd"
             
-                for _ in 0..<visibleMonthEventDates.count {
-                    if visibleMonthEventDates.contains(cellState.date) {
-//                    if formatter.string(from: cellState.date) == calendarDates[i] {
-                        validCell.eventImageView.image = UIImage(named: "currentDateEllipse")
-                        validCell.eventImageView.isHidden = false
-                    } else {
-                        validCell.eventImageView.isHidden = true
-                }
-            }
+//                for _ in 0..<visibleMonthEventDates.count {
+//                    if visibleMonthEventDates.contains(cellState.date) {
+////                    if formatter.string(from: cellState.date) == calendarDates[i] {
+//                        validCell.eventImageView.image = UIImage(named: "currentDateEllipse")
+//                        validCell.eventImageView.isHidden = false
+//                    } else {
+//                        validCell.eventImageView.isHidden = true
+//                }
+//            }
         }
         
         func addCalendarEvent(title: String, allDay: Bool, startDate: Date, endDate: Date, notes: String?) {
@@ -216,13 +216,21 @@
             formatter.dateFormat = "dd MMM yyyy, h:mm a"
             formatter.timeZone = TimeZone.current
             
+            if allDay == true {
+                formatter.dateFormat = "EEEE dd MM yyyy"
+            } else {
+                formatter.dateFormat = "dd MMM yyyy, h:mm a"
+            }
+            
             if self.startTextField.text != "" {
+//                formatter.dateFormat = "EEEE dd MM yyyy"
                 startDate = formatter.date(from: self.startTextField.text!)!
             } else {
                 startDate = Date()
             }
             
             if endTextField.text != "" {
+//                formatter.dateFormat = "EEEE dd MM yyyy"
                 endDate = formatter.date(from: self.endTextField.text!)!
             } else {
                 startDate = Date()
@@ -237,6 +245,7 @@
         
         @IBAction func addEventCancleButtonAction(_ sender: UIButton) {
             addEventView.isHidden = true
+            nullifyAddEventEntries()
         }
         
         func convertDateToString(date: Int64, format: String) -> String {
@@ -257,15 +266,19 @@
                     
                     for i in 0..<eventsOnSelectedDate.count {
                         let event = Event()
+                        
                         let duration = Int(arc4random_uniform(160) + 60)
                         let datePeriod = TimePeriod(beginning: date, chunk: TimeChunk.dateComponents(minutes: duration))
                         
                         event.startDate = datePeriod.beginning!
                         event.endDate = datePeriod.end!
+
+//                        event.startDate = eventsOnSelectedDate[i].startDate
+//                        event.endDate = eventsOnSelectedDate[i].endDate
                         let info = eventsOnSelectedDate[i].title
                         event.text = info!
                         event.color = colors[Int(arc4random_uniform(UInt32(colors.count)))]
-                        event.isAllDay = Int(arc4random_uniform(2)) % 2 == 0
+                        event.isAllDay = eventsOnSelectedDate[i].isAllDay
                         
                         // Event styles are updated independently from CalendarStyle
                         // hence the need to specify exact colors in case of Dark style
@@ -345,6 +358,7 @@
         @IBAction func addEventButtonAction(_ sender: UIButton) {
             eventListContainerView.isHidden = true
             addEventView.isHidden = false
+            nullifyAddEventEntries()
         }
         
         @IBAction func closeEventListButtonAction(_ sender: UIButton) {
@@ -413,7 +427,7 @@
             }
         }
         
-        func getMonthEventsOnCalendar(eventsOnSelectedMonth: [Date]) -> [Date] {
+        func getMonthEventsOnCalendar(eventsOnSelectedMonth: [Date]) -> [String] {
             
             let eventStrore = EKEventStore()
             let calendars = eventStrore.calendars(for: .event)
@@ -424,12 +438,29 @@
                         let predicate = eventStrore.predicateForEvents(withStart: eventDate, end: Calendar.current.date(byAdding: .hour, value: 24, to: eventDate)!, calendars: [calendar])
                         
                         if eventStrore.events(matching: predicate).count > 0 {
-                            visibleMonthEventDates.append(eventDate)
+                            formatter.dateFormat = "dd MM yyyy"
+                            let dateString = formatter.string(from: eventDate)
+                            visibleMonthEventDates.append(dateString)
                         }
                     }
                 }
             }
             return visibleMonthEventDates
+        }
+        
+        func nullifyAddEventEntries() {
+            addEventTitleTextField.text = nil
+            addEventLocationTextField.text = nil
+            allDayEventSwitch.isOn = false
+            startTextField.text = nil
+            endTextField.text = nil
+            addEventAlertSwitch.isOn = false
+            eventNotesTextView.text = nil
+            addEventTitleTextField.resignFirstResponder()
+            addEventLocationTextField.resignFirstResponder()
+            startTextField.resignFirstResponder()
+            endTextField.resignFirstResponder()
+            eventNotesTextView.resignFirstResponder()
         }
     }
     
@@ -511,7 +542,10 @@
                 cell.currentDateImageView.isHidden = true
             }
             
-            if visibleMonthEventDates.contains(cellState.date) {
+            formatter.dateFormat = "dd MM yyyy"
+            let cellDate = formatter.string(from: cellState.date)
+            
+            if visibleMonthEventDates.contains(cellDate) {
                 cell.eventImageView.image = UIImage(named: "currentDateEllipse")
                 cell.eventImageView.isHidden = false
             } else {
