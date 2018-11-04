@@ -300,12 +300,19 @@
                 datePicker.datePickerMode = .date
             } else {
                 datePicker.datePickerMode = .dateAndTime
-                formatter.dateFormat = "dd MMM yyyy, h:mm a"
+//                formatter.dateFormat = "dd MMM yyyy, h:mm a"
+                
                 if (startTextField.text?.count)! > 0 {
-                    startTextField.text = formatter.string(from: (formatter.date(from: startTextField.text!)!))
+                    formatter.dateFormat = "EEEE dd MM yyyy"
+                    let currentSelectedDate = formatter.date(from: startTextField.text!)
+                    formatter.dateFormat = "dd MMM yyyy, h:mm a"
+                    startTextField.text = formatter.string(from: currentSelectedDate!)
                 }
                 if (endTextField.text?.count)! > 0 {
-                    endTextField.text = formatter.string(from: (formatter.date(from: endTextField.text!)!))
+                    formatter.dateFormat = "EEEE dd MM yyyy"
+                    let currentSelectedDate = formatter.date(from: endTextField.text!)
+                    formatter.dateFormat = "dd MMM yyyy, h:mm a"
+                    endTextField.text = formatter.string(from: currentSelectedDate!)
                 }
             }
         }
@@ -541,6 +548,7 @@
             eventListContainerView.isHidden = false
             let calendarListView = dayVC.dayView
             calendarListView.reloadData()
+            
             calendarListView.frame = CGRect(x: 0, y: 0, width: eventListView.frame.width, height: eventListView.frame.height)
             
             formatter.dateFormat = "EEEE dd MMM yyyy"
