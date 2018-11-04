@@ -11,6 +11,7 @@
     import EventKit
     import CalendarKit
     import DateToolsSwift
+    import UserNotifications
     
     class ViewController: UIViewController, EventDataSource, DayViewDelegate {
         func dayViewDidLongPressTimelineAtHour(_ hour: Int) {
@@ -38,6 +39,8 @@
         @IBOutlet weak var eventNotesTextView: UITextView!
         @IBOutlet weak var endTextField: UITextField!
         @IBOutlet weak var startTextField: UITextField!
+        @IBOutlet weak var addEventAlertSwitch: UISwitch!
+        
         
         // Event List View Properties.
         @IBOutlet weak var eventListContainerView: UIView!
@@ -64,6 +67,12 @@
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            
+            // Request for Local Notificaton Authorisation
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
+                
+            })
+
             setAllViewBorders()
             pickerHeaderView.isHidden = true
             datePicker.isHidden = true
@@ -155,6 +164,39 @@
                         print("event added !")
                         DispatchQueue.main.async {
                             self.addEventCancleButtonAction(UIButton())
+                            
+                            // If User Selected for sending Alerts
+                            if self.addEventAlertSwitch.isOn {
+                                
+                                // Creating the notification content
+                                let content = UNMutableNotificationContent()
+                                
+                                //adding title, subtitle, body and badge
+                                content.title = "Fire Fighter"
+                                if notes != nil {
+                                    content.subtitle = title
+                                    content.body = notes!
+                                } else {
+                                    content.body = title
+                                }
+                                content.badge = 1
+                                
+                                let dateString = self.formatter.string(from: startDate)
+                                self.formatter.timeZone = TimeZone.current
+                                let dateFromString = self.formatter.date(from: dateString)
+                                print(dateFromString!)
+                                
+                                let triggerDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: dateFromString!)
+                                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
+
+                                //getting the notification request
+                                let request = UNNotificationRequest(identifier: "SimplifiedIOSNotification", content: content, trigger: trigger)
+                                
+                                UNUserNotificationCenter.current().delegate = self
+                                
+                                //adding the notification to notification center
+                                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                            }
                         }
                     }
                 }
@@ -170,6 +212,7 @@
             var notes: String?
             
             formatter.dateFormat = "dd MMM yyyy, h:mm a"
+            formatter.timeZone = TimeZone.current
             
             if self.startTextField.text != "" {
                 startDate = formatter.date(from: self.startTextField.text!)!
@@ -186,6 +229,7 @@
             if let eventNotes = self.eventNotesTextView.text {
                 notes = eventNotes
             }
+            
             addCalendarEvent(title: title!, allDay: allDay, startDate: startDate, endDate: endDate, notes: notes)
         }
         
@@ -350,8 +394,6 @@
                     for eventDate in eventsOnSelectedMonth {
                         let predicate = eventStrore.predicateForEvents(withStart: eventDate, end: Calendar.current.date(byAdding: .hour, value: 24, to: eventDate)!, calendars: [calendar])
                         
-//                    let predicate = eventStrore.predicateForEvents(withStart: userSelectedDate, end: Calendar.current.date(byAdding: .day, value: 1, to: userSelectedDate)!, calendars: [calendar])
-                    
                         if eventStrore.events(matching: predicate).count > 0 {
                             visibleMonthEventDates.append(eventDate)
                         }
@@ -389,6 +431,15 @@
                 addEventAddButton.isEnabled = false
             }
             return true
+        }
+    }
+    
+    //    MARK:- User Notifications Delegates
+    extension ViewController: UNUserNotificationCenterDelegate {
+        func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+            
+            //displaying the ios local notification when app is in foreground
+            completionHandler([.alert, .badge, .sound])
         }
     }
     
